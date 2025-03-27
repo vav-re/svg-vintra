@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VINTRA Logo Animation</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      overflow: hidden;
+      transition: background-color 2s ease;
+    }
+    
+    #logo-container {
+      width: 450px;
+      height: 450px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #vintra-logo {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    }
+    
+    path {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.9);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 1s ease;
+    }
+    
+    .background-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(50, 50, 50, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="logo-container">
+    <div class="background-glow"></div>
+    <svg id="vintra-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+      </defs>
+      <g transform="translate(0,450) scale(0.05,-0.05)" fill="none">
+        <path class="logo-path" id="path1" d="M3300 5974 c0 -15 372 -666 385 -674 8 -6 76 103 151 240 75 138 161 293 192 345 l56 95 -392 0 c-216 0 -392 -3 -392 -6z"/>
+        <path class="logo-path" id="path2" d="M4027 5539 l-243 -440 279 -495 c153 -272 311 -559 352 -639 88 -170 85 -169 138 -60 23 47 290 530 594 1073 304 544 553 992 553 995 0 30 -277 3 -289 -28 -22 -59 -900 -1643 -911 -1644 -9 0 -169 290 -288 520 l-37 73 255 458 c140 252 277 496 304 543 l50 85 -257 0 -257 -1 -243 -440z"/>
+        <path class="logo-path" id="path3" d="M4668 5434 l-302 -544 62 -115 c34 -63 67 -115 72 -114 6 0 100 163 210 362 110 200 274 494 365 655 91 160 165 293 165 296 0 3 -61 6 -135 5 l-135 0 -302 -545z"/>
+        <path class="logo-path" id="path4" d="M2851 3190 c60 -127 109 -240 109 -252 0 -11 23 -18 51 -14 43 5 66 40 160 244 128 279 122 256 57 248 -45 -5 -62 -30 -123 -181 -88 -214 -80 -214 -173 5 -70 166 -80 180 -133 180 l-56 0 108 -230z"/>
+        <path class="logo-path" id="path5" d="M3480 3170 l0 -250 50 0 50 0 0 250 0 250 -50 0 -50 0 0 -250z"/>
+        <path class="logo-path" id="path6" d="M3840 3170 l0 -250 49 0 c48 0 50 4 55 169 l6 169 137 -169 c196 -243 213 -236 213 81 l0 250 -53 0 -53 0 12 -170 c15 -206 27 -206 -139 0 -204 253 -227 245 -227 -80z"/>
+        <path class="logo-path" id="path7" d="M4520 3380 c0 -34 13 -40 90 -40 l90 0 0 -210 0 -210 50 0 50 0 0 210 0 210 90 0 c77 0 90 6 90 40 0 38 -13 40 -230 40 -217 0 -230 -2 -230 -40z"/>
+        <path class="logo-path" id="path8" d="M5200 3170 l0 -250 50 0 c45 0 50 8 50 80 0 77 2 80 67 80 56 0 77 -14 123 -80 44 -63 68 -80 115 -80 l60 0 -72 87 -71 87 59 44 c164 121 44 282 -210 282 l-171 0 0 -250z m329 126 c50 -73 1 -125 -126 -132 l-103 -6 0 91 0 91 99 0 c79 0 105 -9 130 -44z"/>
+        <path class="logo-path" id="path9" d="M6031 3316 c-26 -58 -75 -168 -109 -243 -74 -164 -73 -153 -14 -153 35 0 54 16 69 60 20 58 25 60 150 60 124 0 129 -2 153 -60 18 -43 38 -60 72 -60 60 0 67 -29 -62 251 -136 296 -180 321 -259 145z m188 -201 c0 -8 -39 -15 -89 -15 -104 0 -105 2 -47 132 l44 98 45 -100 c25 -55 46 -107 47 -115z"/>
+      </g>
+    </svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar elementos
+      const paths = document.querySelectorAll('.logo-path');
+      const logoContainer = document.getElementById('logo-container');
+      const logo = document.getElementById('vintra-logo');
+      const backgroundGlow = document.querySelector('.background-glow');
+      
+      // Configurar as propriedades iniciais
+      gsap.set(paths, {
+        strokeDasharray: function(i, target) {
+          return target.getTotalLength();
+        },
+        strokeDashoffset: function(i, target) {
+          return target.getTotalLength();
+        },
+        opacity: 0.2
+      });
+      
+      gsap.set(logo, {
+        scale: 0.98,
+        opacity: 0.85
+      });
+      
+      // Criar timeline principal
+      const mainTimeline = gsap.timeline({
+        defaults: { ease: "power2.inOut" },
+        onComplete: function() {
+          // Reiniciar animação após 3 segundos
+          setTimeout(() => mainTimeline.restart(), 3000);
+        }
+      });
+      
+      // Entrada suave do logo
+      mainTimeline.to(logo, {
+        scale: 1,
+        opacity: 1,
+        duration: 1.5,
+        ease: "sine.inOut"
+      });
+      
+      // 1. Animar traçados dos caminhos - mais lento e elegante
+      paths.forEach((path, index) => {
+        mainTimeline.to(path, {
+          strokeDashoffset: 0,
+          duration: 1.8,
+          opacity: 1,
+          delay: index * 0.08,
+          ease: "sine.inOut"
+        }, index * 0.2 + 0.5);
+      });
+      
+      // Glow durante o desenho
+      mainTimeline.to(backgroundGlow, {
+        opacity: 0.6,
+        duration: 2.5,
+        ease: "sine.inOut"
+      }, 1);
+      
+      // 2. Pausa elegante antes de preencher
+      mainTimeline.to({}, { duration: 0.8 });
+      
+      // 3. Preenchimento gradual e refinado
+      mainTimeline.to(paths, {
+        fill: "rgba(255, 255, 255, 0.95)",
+        duration: 1.2,
+        stagger: {
+          each: 0.08,
+          from: "random"
+        },
+        ease: "power1.inOut"
+      });
+      
+      // 4. Efeito de brilho suave
+      mainTimeline.to(paths, {
+        filter: "url(#glow)",
+        duration: 1.5,
+        ease: "sine.inOut"
+      }, "-=0.5");
+      
+      // Intensificar o brilho de fundo
+      mainTimeline.to(backgroundGlow, {
+        opacity: 0.8,
+        background: "radial-gradient(circle, rgba(100, 100, 100, 0.4) 0%, rgba(0, 0, 0, 0) 70%)",
+        duration: 1.2
+      }, "-=1");
+      
+      // 5. Preparação para a inversão de cores - pulso sutil
+      mainTimeline.to(logo, {
+        scale: 1.02,
+        duration: 0.8,
+        ease: "sine.inOut"
+      });
+      
+      mainTimeline.to(logo, {
+        scale: 1,
+        duration: 0.8,
+        ease: "sine.inOut"
+      });
+      
+      // 6. Transição suave para inversão de cores
+      mainTimeline.to('body', {
+        backgroundColor: "#ffffff",
+        duration: 2,
+        ease: "power2.inOut"
+      });
+      
+      // Transição do logo para preto
+      mainTimeline.to(paths, {
+        stroke: "#000000",
+        fill: "#000000",
+        duration: 1.8,
+        ease: "power2.inOut"
+      }, "-=1.5");
+      
+      // Ajuste do brilho de fundo
+      mainTimeline.to(backgroundGlow, {
+        background: "radial-gradient(circle, rgba(200, 200, 200, 0.3) 0%, rgba(255, 255, 255, 0) 70%)",
+        duration: 1.5
+      }, "-=1.5");
+      
+      // 7. Manter o logo preto por um tempo com respiração sutil
+      mainTimeline.to(logo, {
+        scale: 1.01,
+        duration: 2,
+        repeat: 1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+      
+      // 8. Preparar para retornar ao estado inicial
+      mainTimeline.to(backgroundGlow, {
+        opacity: 0.3,
+        duration: 1
+      });
+      
+      // 9. Retornar ao fundo preto
+      mainTimeline.to('body', {
+        backgroundColor: "#000000",
+        duration: 2,
+        ease: "power2.inOut"
+      });
+      
+      // 10. Retornar às linhas brancas e remover preenchimento
+      mainTimeline.to(paths, {
+        stroke: "rgba(255, 255, 255, 0.9)",
+        fill: "none",
+        duration: 1.8,
+        ease: "power2.inOut"
+      }, "-=1.5");
+      
+      // 11. Desvanecer linhas
+      mainTimeline.to(paths, {
+        strokeDashoffset: function(i, target) {
+          return target.getTotalLength();
+        },
+        opacity: 0.2,
+        duration: 1.5,
+        stagger: {
+          each: 0.08,
+          from: "end"
+        },
+        ease: "power1.inOut"
+      });
+      
+      // Reduzir a escala para preparar o próximo ciclo
+      mainTimeline.to(logo, {
+        scale: 0.98,
+        opacity: 0.85,
+        duration: 1.2,
+        ease: "sine.inOut"
+      }, "-=1");
+      
+      // Iniciar a animação
+      mainTimeline.play();
+    });
+  </script>
+</body>
+</html>
