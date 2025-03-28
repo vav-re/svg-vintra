@@ -41,8 +41,14 @@
         }
     </script>
     <style>
+        /* Mesh Gradient Styles */
         body {
-            background: linear-gradient(120deg, #F8FAFC, #F1F5F9);
+            background: 
+                radial-gradient(at 20% 30%, rgba(30, 58, 138, 0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 10%, rgba(6, 95, 70, 0.3) 0px, transparent 50%),
+                radial-gradient(at 10% 90%, rgba(236, 72, 153, 0.25) 0px, transparent 50%),
+                radial-gradient(at 70% 80%, rgba(59, 130, 246, 0.25) 0px, transparent 50%),
+                radial-gradient(at 40% 50%, rgba(16, 185, 129, 0.2) 0px, transparent 50%);
             background-size: 200% 200%;
             animation: gradientBackground 25s ease infinite;
         }
@@ -53,13 +59,20 @@
             100% { background-position: 0% 50%; }
         }
         
-        .card-hover {
+        /* Glassmorphism Effect */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
         
-        .card-hover:hover {
+        .glassmorphism:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         .radar-container {
@@ -75,13 +88,6 @@
         .dimension-label:hover {
             transform: scale(1.05);
             font-weight: 600;
-        }
-        
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -144,7 +150,7 @@
         </div>
 
         <!-- Patient Card -->
-        <div class="glassmorphism rounded-xl p-6 mb-8 card-hover">
+        <div class="glassmorphism rounded-xl p-6 mb-8">
             <div class="flex flex-col sm:flex-row justify-between">
                 <div>
                     <h2 class="text-xl font-semibold text-gray-800">Osmarina</h2>
@@ -180,7 +186,7 @@
         <!-- Main Grid Layout -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Dimensional Radar Chart -->
-            <div class="glassmorphism rounded-xl p-6 col-span-1 md:col-span-2 card-hover">
+            <div class="glassmorphism rounded-xl p-6 col-span-1 md:col-span-2">
                 <h3 class="text-lg font-semibold mb-4">Análise Dimensional</h3>
                 <div class="radar-container h-80">
                     <canvas id="radarChart"></canvas>
@@ -240,7 +246,7 @@
                         <h4 class="text-sm font-semibold text-autonomy">Dimensão Autonomia</h4>
                         <div class="flex items-center">
                             <div class="w-3 h-3 rounded-full bg-autonomy mr-2"></div>
-                            <span class="text-sm font-medium">Perspective Temporal:</span>
+                            <span class="text-sm font-medium">Perspectiva Temporal:</span>
                             <div class="ml-2 text-sm text-gray-600 flex space-x-1">
                                 <span class="px-1.5 py-0.5 bg-autonomy bg-opacity-20 rounded-sm text-xs">P:7</span>
                                 <span class="px-1.5 py-0.5 bg-autonomy bg-opacity-10 rounded-sm text-xs">Pr:2</span>
@@ -257,7 +263,7 @@
             </div>
 
             <!-- Clinical Summary -->
-            <div class="glassmorphism rounded-xl p-6 card-hover">
+            <div class="glassmorphism rounded-xl p-6">
                 <h3 class="text-lg font-semibold mb-4">Resumo Clínico</h3>
                 <p class="text-sm text-gray-600 leading-relaxed">
                     Paciente apresenta sofrimento psicológico significativo após a morte do marido em dezembro de 2024. Sintomas primários incluem dor crônica (lombar, pernas, cabeça), distúrbio do sono, perda de apetite e perda de peso (6kg). A relação temporal entre o início do luto e a exacerbação dos sintomas físicos sugere manifestação somática de luto não processado.
@@ -265,7 +271,7 @@
                 
                 <div class="mt-6 border-t border-gray-100 pt-4">
                     <h4 class="text-sm font-medium mb-2">Narrativa Ipsissima</h4>
-                    <blockquote class="text-sm italic text-gray-600 bg-gray-50 p-3 rounded-md">
+                    <blockquote class="text-sm italic text-gray-600 bg-gray-50 bg-opacity-50 p-3 rounded-md">
                         "Foi depois que meu marido faleceu, em dezembro do ano passado. Ele era meu companheiro, meu amigo. E eu sinto muita falta, eu não me conformo... Depois disso, parece que meu corpo desabou."
                     </blockquote>
                 </div>
@@ -279,7 +285,7 @@
             </div>
 
             <!-- Trajectory Analysis -->
-            <div class="glassmorphism rounded-xl p-6 card-hover">
+            <div class="glassmorphism rounded-xl p-6">
                 <h3 class="text-lg font-semibold mb-4">Análise Trajetorial</h3>
                 <p class="text-sm text-gray-600 leading-relaxed">
                     A paciente exibe um padrão de somatização crescente como estratégia de evitação para processamento do luto. Múltiplas consultas médicas com melhora limitada indicam potencial iatrogenização. A trajetória atual sugere aumento da dependência medicamentosa sem abordar o processo emocional central.
@@ -299,7 +305,7 @@
             </div>
 
             <!-- Intervention Targets -->
-            <div class="glassmorphism rounded-xl p-6 card-hover md:col-span-2">
+            <div class="glassmorphism rounded-xl p-6 md:col-span-2">
                 <h3 class="text-lg font-semibold mb-4">Alvos de Intervenção Dimensional</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div class="bg-emotional bg-opacity-5 p-4 rounded-lg border border-emotional border-opacity-10">
@@ -329,7 +335,7 @@
             </div>
 
             <!-- Treatment Recommendations -->
-            <div class="glassmorphism rounded-xl p-6 card-hover">
+            <div class="glassmorphism rounded-xl p-6">
                 <h3 class="text-lg font-semibold mb-4">Recomendações de Tratamento</h3>
                 <ul class="space-y-3">
                     <li class="flex items-start">
@@ -354,7 +360,7 @@
     </main>
     
     <!-- Footer -->
-    <footer class="border-t border-gray-200 mt-12">
+    <footer class="mt-12">
         <div class="max-w-7xl mx-auto py-6 px-4 overflow-hidden sm:px-6 lg:px-8">
             <p class="text-center text-xs text-gray-500">
                 VINTRA - Visualização INtegrativa TRAjetorial &copy; 2025
